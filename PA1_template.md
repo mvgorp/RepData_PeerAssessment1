@@ -2,8 +2,6 @@
 
 
 ### Loading and preprocessing the data
-Show any code that is needed to
-
 Load the data (i.e. 𝚛𝚎𝚊𝚍.𝚌𝚜𝚟())
 
 ```r
@@ -70,7 +68,7 @@ print(median1)
 Make a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)
 
 ```r
-### What is the average daily activity pattern?
+# Sum of steps, by interval and remove the missing values
 steps_by_interval <- tapply(data$steps, data$interval, FUN=mean, na.rm = TRUE)
 
 # Plot
@@ -101,7 +99,7 @@ print(interval_with_maximum_value)
 Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with 𝙽𝙰s)
 
 ```r
-# Sum all records that are not complete
+# Sum of all rows that are not complete
 nr_of_nas <- sum(!complete.cases(data))
 
 #
@@ -124,7 +122,7 @@ means <- tapply(data$steps, data$interval, mean, na.rm = TRUE)
 means_df = as.data.frame.table(means)
 names(means_df) = c("interval","mean")
 
-# Use these means of intervals over all days to fill in NA's
+# Use these means of intervals over all days to fill in the NA's
 data_new = data
 for (i in 1:nrow(data_new)) {
     # If NA is found

@@ -114,7 +114,6 @@ $(document).ready(function () {
 
 <div id="loading-and-preprocessing-the-data" class="section level3">
 <h3>Loading and preprocessing the data</h3>
-<p>Show any code that is needed to</p>
 <p>Load the data (i.e. 𝚛𝚎𝚊𝚍.𝚌𝚜𝚟())</p>
 <pre class="r"><code># Read CSV file
 data = read.csv('activity.csv', header = TRUE, sep=&quot;,&quot;)
@@ -152,7 +151,7 @@ print(median1)</code></pre>
 <div id="what-is-the-average-daily-activity-pattern" class="section level3">
 <h3>What is the average daily activity pattern?</h3>
 <p>Make a time series plot (i.e. 𝚝𝚢𝚙𝚎 = “𝚕”) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis)</p>
-<pre class="r"><code>### What is the average daily activity pattern?
+<pre class="r"><code># Sum of steps, by interval and remove the missing values
 steps_by_interval &lt;- tapply(data$steps, data$interval, FUN=mean, na.rm = TRUE)
 
 # Plot
@@ -171,7 +170,7 @@ print(interval_with_maximum_value)</code></pre>
 <div id="imputing-missing-values" class="section level3">
 <h3>Imputing missing values</h3>
 <p>Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with 𝙽𝙰s)</p>
-<pre class="r"><code># Sum all records that are not complete
+<pre class="r"><code># Sum of all rows that are not complete
 nr_of_nas &lt;- sum(!complete.cases(data))
 
 #
@@ -185,7 +184,7 @@ means &lt;- tapply(data$steps, data$interval, mean, na.rm = TRUE)
 means_df = as.data.frame.table(means)
 names(means_df) = c(&quot;interval&quot;,&quot;mean&quot;)
 
-# Use these means of intervals over all days to fill in NA's
+# Use these means of intervals over all days to fill in the NA's
 data_new = data
 for (i in 1:nrow(data_new)) {
     # If NA is found
