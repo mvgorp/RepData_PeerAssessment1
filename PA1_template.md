@@ -1,4 +1,4 @@
-# Reproducible Research: Peer Assessment 1
+# Test Report
 
 
 ### Loading and preprocessing the data
